@@ -1,21 +1,36 @@
-import pandas as pd
-import plotly.express as px
+import scipy.stats
 import streamlit as st
+import time
 
-car_data = pd.read_csv(
-    'vehicles_us.csv')  # leer los datos
-hist_button = st.button('Construir histograma')  # crear un botón
+st.header('Lanzar una moneda')
 
-if hist_button:  # al hacer clic en el botón
-    # escribir un mensaje
-    st.write(
-        'Creación de un histograma para el conjunto de datos de anuncios de venta de coches')
+chart = st.line_chart([0.5])
 
-    # crear un histograma
-    fig = px.histogram(car_data, x="odometer")
 
-    # mostrar un gráfico Plotly interactivo
-    st.plotly_chart(fig, use_container_width=True)
+def toss_coin(n):  # función que emula el lanzamiento de una moneda
+
+    trial_outcomes = scipy.stats.bernoulli.rvs(p=0.5, size=n)
+
+    mean = None
+    outcome_no = 0
+    outcome_1_count = 0
+
+    for r in trial_outcomes:
+        outcome_no += 1
+        if r == 1:
+            outcome_1_count += 1
+        mean = outcome_1_count / outcome_no
+        chart.add_rows([mean])
+        time.sleep(0.05)
+
+    return mean
+
+
+number_of_trials = st.slider('¿Número de intentos?', 1, 1000, 10)
+start_button = st.button('Ejecutar')
+
+if start_button:
+    st.write(f'Experimento con {number_of_trials} intentos en curso.')
 
 # car_data = pd.read_csv(
 #   'C:\\Users\\edson\\AppData\\Local\\Programs\\Python\\Python313\\Python_Edson\\TripleTen\\Sprint_7\\Project_Sprit_7\\vehicles_us.csv')  # leer los datos
