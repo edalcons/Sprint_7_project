@@ -12,8 +12,6 @@ car_data = pd.read_csv('vehicles_us.csv')  # leer los datos
 
 st.header("Proyecto Sprit 7: Visualización de datos de anuncios de venta de coches")
 
-st.header("")
-
 st.markdown(
     "<h1 style='font-size:20px;'>Histograma de automóviles según su odómetro</h1>",
     unsafe_allow_html=True
@@ -70,6 +68,32 @@ if build_scatter_toyota_for_sale:  # si la casilla de verificación está selecc
  # mostrar un gráfico Plotly interactivo
     st.plotly_chart(fig, use_container_width=True)
 
+
+st.markdown(
+    "<h1 style='font-size:20px;'>Automoviles TOYOTA vs su precio promedio de venta en USD </h1>",
+    unsafe_allow_html=True
+)
+
+# ahora volvemos a agrupar el dataset original por modelo que contiene toyota
+# y agregamos columna con el precio promedio por modelo usando solo 2 decimales y formato de moneda USD
+grouped_data = car_data[car_data["model"].str.contains(
+    "toyota", case=False, na=False)].groupby("model").size().reset_index(name='counts')
+grouped_data['average_price'] = car_data[car_data["model"].str.contains(
+    "toyota", case=False, na=False)].groupby("model")["price"].mean().values
+grouped_data['average_price'] = grouped_data['average_price'].apply(
+    lambda x: f"${x:,.2f}")
+display(grouped_data)
+
+build_scatter_toyota_for_sale = st.checkbox(
+    'Construir un grafico de barras de modelos de Toyota vs Precio promedio de venta')
+if build_scatter_toyota_for_sale:  # si la casilla de verificación está seleccionada
+    st.write('haz  seleccionado la casilla para generar un grafico de barras. ahora vamos a construirlo para los modelos de Toyota vs su precio promedio de venta')
+    # crear un gráfico de barras
+    fig = px.bar(grouped_data, x="model", y="average_price")
+   # fig.show()  # crear gráfico de barras
+
+ # mostrar un gráfico Plotly interactivo
+    st.plotly_chart(fig, use_container_width=True)
 
 # car_data = pd.read_csv(
 #   'C:\\Users\\edson\\AppData\\Local\\Programs\\Python\\Python313\\Python_Edson\\TripleTen\\Sprint_7\\Project_Sprit_7\\vehicles_us.csv')
