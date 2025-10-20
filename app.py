@@ -14,7 +14,10 @@ st.header("Proyecto Sprit 7: Visualización de datos de anuncios de venta de coc
 
 st.header("")
 
-st.header("Histograma de automoviles segun su odometro")
+st.markdown(
+    "<h1 style='font-size:20px;'>Histograma de automóviles según su odómetro</h1>",
+    unsafe_allow_html=True
+)
 
 build_histogram = st.checkbox('Construir un histograma')
 if build_histogram:  # si la casilla de verificación está seleccionada
