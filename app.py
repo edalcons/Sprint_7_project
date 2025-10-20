@@ -41,8 +41,29 @@ if build_scatter_odometer_vs_price:  # si la casilla de verificación está sele
  # mostrar un gráfico Plotly interactivo
     st.plotly_chart(fig, use_container_width=True)
 
+    # Analisis de automoviles marca Toyota en venta
+
+# agrupamos por modelo contiene a toyota
+grouped_data = car_data[car_data["model"].str.contains(
+    "toyota", case=False, na=False)].groupby("model").size().reset_index(name='counts')
+
+st.header("Automoviles TOYOTA en venta")
+
+build_scatter_toyota_for_sale = st.checkbox(
+    'Construir un grafico de barras de modelos de Toyota en venta')
+if build_scatter_toyota_for_sale:  # si la casilla de verificación está seleccionada
+    st.write('haz  seleccionado la casilla para generar un grafico de barras. ahora vamos a construirlo para los modelos de Toyota en venta')
+    # crear un gráfico de barras
+    fig = px.bar(grouped_data, x="model", y="counts")
+   # fig.show()  # crear gráfico de barras
+
+ # mostrar un gráfico Plotly interactivo
+    st.plotly_chart(fig, use_container_width=True)
+
+
 # car_data = pd.read_csv(
-#   'C:\\Users\\edson\\AppData\\Local\\Programs\\Python\\Python313\\Python_Edson\\TripleTen\\Sprint_7\\Project_Sprit_7\\vehicles_us.csv')  # leer los datos
+#   'C:\\Users\\edson\\AppData\\Local\\Programs\\Python\\Python313\\Python_Edson\\TripleTen\\Sprint_7\\Project_Sprit_7\\vehicles_us.csv')
+#  # leer los datos
 # print(car_data.columns)
 
 
