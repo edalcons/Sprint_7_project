@@ -76,20 +76,20 @@ st.markdown(
 
 # ahora volvemos a agrupar el dataset original por modelo que contiene toyota
 # y agregamos columna con el precio promedio por modelo usando solo 2 decimales y formato de moneda USD
-grouped_data = car_data[car_data["model"].str.contains(
+grouped_data2 = car_data[car_data["model"].str.contains(
     "toyota", case=False, na=False)].groupby("model").size().reset_index(name='counts')
-grouped_data['average_price'] = car_data[car_data["model"].str.contains(
+grouped_data2['average_price'] = car_data[car_data["model"].str.contains(
     "toyota", case=False, na=False)].groupby("model")["price"].mean().values
-grouped_data['average_price'] = grouped_data['average_price'].apply(
+grouped_data2['average_price'] = grouped_data2['average_price'].apply(
     lambda x: f"${x:,.2f}")
-display(grouped_data)
+
 
 build_scatter_toyota_for_sale = st.checkbox(
     'Construir un grafico de barras de modelos de Toyota vs Precio promedio de venta')
 if build_scatter_toyota_for_sale:  # si la casilla de verificación está seleccionada
     st.write('haz  seleccionado la casilla para generar un grafico de barras. ahora vamos a construirlo para los modelos de Toyota vs su precio promedio de venta')
     # crear un gráfico de barras
-    fig = px.bar(grouped_data, x="model", y="average_price")
+    fig = px.bar(grouped_data2, x="model", y="average_price")
    # fig.show()  # crear gráfico de barras
 
  # mostrar un gráfico Plotly interactivo
