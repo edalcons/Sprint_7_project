@@ -12,6 +12,10 @@ car_data = pd.read_csv('vehicles_us.csv')  # leer los datos
 
 st.header("Proyecto Sprit 7: Visualización de datos de anuncios de venta de coches")
 
+st.header("")
+
+st.header("Histograma de automoviles segun su odometro")
+
 build_histogram = st.checkbox('Construir un histograma')
 if build_histogram:  # si la casilla de verificación está seleccionada
     st.write('haz  seleccionado la casilla para generar un grafico de histograma. ahora vamos a construirlo para la columna odometro')
@@ -22,11 +26,8 @@ if build_histogram:  # si la casilla de verificación está seleccionada
     # mostrar un gráfico Plotly interactivo
     st.plotly_chart(fig, use_container_width=True)
 
-st.header("")
 
 st.header("Odometro vs Precio")
-
-st.header("")
 
 
 build_scatter_odometer_vs_price = st.checkbox(
