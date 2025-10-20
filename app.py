@@ -22,6 +22,13 @@ if build_histogram:  # si la casilla de verificación está seleccionada
     # mostrar un gráfico Plotly interactivo
     st.plotly_chart(fig, use_container_width=True)
 
+st.header("")
+
+st.header("Odometro vs Precio")
+
+st.header("")
+
+
 build_scatter_odometer_vs_price = st.checkbox(
     'Construir un grafico de dispercion odometro vs precio')
 if build_scatter_odometer_vs_price:  # si la casilla de verificación está seleccionada
