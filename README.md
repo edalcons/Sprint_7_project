@@ -37,3 +37,14 @@ Las visualizaciones disponibles incluyen:
 
 ## 🗂️ Estructura del proyecto
 
+project/
+│
+├── vehicles_us.csv # Dataset con la información de los vehículos
+├── app.py # Código principal del proyecto (este archivo)
+└── README.md # Documentación del proyecto
+
+
+---
+
+
+
