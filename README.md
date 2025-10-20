@@ -1,8 +1,10 @@
 
 # 🚗 Proyecto Sprint 7: Visualización de Datos de Anuncios de Venta de Coches
 
-Este proyecto es una aplicación interactiva construida con **Streamlit** y **Plotly**, diseñada para analizar y visualizar datos de anuncios de automóviles usados.  
-Permite explorar relaciones entre variables como el **odómetro**, el **precio** y los **modelos de automóviles Toyota**, de forma dinámica y visual.
+Aplicación interactiva construida con **Streamlit** y **Plotly**, diseñada para analizar y visualizar datos de anuncios de automóviles usados.
+
+👉 **Accede a la aplicación en línea aquí:**  
+🔗 [https://sprint-7-project-209i.onrender.com](https://sprint-7-project-209i.onrender.com)
 
 ---
 
