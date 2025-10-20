@@ -30,8 +30,10 @@ if build_histogram:  # si la casilla de verificación está seleccionada
     st.plotly_chart(fig, use_container_width=True)
 
 
-st.header("Odometro vs Precio")
-
+st.markdown(
+    "<h1 style='font-size:20px;'>Odometro vs Precio</h1>",
+    unsafe_allow_html=True
+)
 
 build_scatter_odometer_vs_price = st.checkbox(
     'Construir un grafico de dispercion odometro vs precio')
@@ -50,7 +52,12 @@ if build_scatter_odometer_vs_price:  # si la casilla de verificación está sele
 grouped_data = car_data[car_data["model"].str.contains(
     "toyota", case=False, na=False)].groupby("model").size().reset_index(name='counts')
 
-st.header("Automoviles TOYOTA en venta")
+
+st.markdown(
+    "<h1 style='font-size:20px;'>Automoviles TOYOTA en venta</h1>",
+    unsafe_allow_html=True
+)
+
 
 build_scatter_toyota_for_sale = st.checkbox(
     'Construir un grafico de barras de modelos de Toyota en venta')
